@@ -24,9 +24,13 @@
   border-radius: 5px;
   overflow: hidden;
 
+  &:focus-within {
+    box-shadow: 0 0 0 2px #f90;
+  }
   input {
     width: 100%;
     border: none;
+    font-size: 16px;
   }
 
   .Header-searchIcon-Container {
@@ -49,10 +53,25 @@
 
 .Header-navItems {
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   .Header-NavOption {
     display: flex;
     flex-direction: column;
     padding: 9px;
+  }
+
+  .cart {
+    display: flex;
+    flex-direction: row;
+    padding: 9px;
+  }
+
+  .Header-cartCount {
+    font-weight: bold;
+    color: #f90;
+    font-size: 20px;
+    padding: 0 3px;
   }
 }
