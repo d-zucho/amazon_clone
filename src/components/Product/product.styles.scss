@@ -1,0 +1,35 @@
+.Product-container {
+  max-height: 400px;
+  background-color: white;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  margin: 15px;
+  padding: 20px;
+
+  .Product-description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    img {
+      max-width: 300px;
+      max-height: 200px;
+      margin: 0 auto;
+    }
+  }
+  button {
+    margin-top: 12px;
+    background-color: #fcb558;
+    width: 100px;
+    height: 32px;
+    border: 1px solid #a88734;
+    border-radius: 3px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

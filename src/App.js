@@ -1,10 +1,21 @@
 import './App.css'
-import Header from './components/Header/Header'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import HomePage from './pages/home/HomePage'
+import CartPage from './pages/cart/CartPage'
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/cart">
+            <CartPage />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   )
 }
