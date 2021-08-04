@@ -16,10 +16,11 @@
   }
 
   .Home-content {
-    margin-top: -200px;
+    margin-top: -300px;
   }
 
   .Home-products {
     display: flex;
+    flex-wrap: wrap;
   }
 }

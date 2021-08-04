@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import Product from '../../components/Product/Product'
 import db from '../../firebase/firebase.config.js'
@@ -6,15 +6,19 @@ import db from '../../firebase/firebase.config.js'
 import './homePage.styles.scss'
 
 function HomePage() {
-  let product = {}
-
-  const getProducts = () =>
-    db.collection('products').onSnapshot((snapshot) => {
-      snapshot.docs.map((doc) => console.log(doc.data()))
-    })
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
-    getProducts()
+    db.collection('products').onSnapshot((snapshot) => {
+      let tempProducts = []
+      snapshot.docs.map((doc) => {
+        tempProducts.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      })
+      setProducts(tempProducts)
+    })
   }, [])
 
   return (
@@ -25,13 +29,14 @@ function HomePage() {
           <div className="Home-banner"></div>
           <div className="Home-content">
             <div className="Home-products">
-              <Product />
-              <Product />
+              {products.slice(0, 2).map((product) => (
+                <Product {...product} />
+              ))}
             </div>
             <div className="Home-products">
-              <Product />
-              <Product />
-              <Product />
+              {products.slice(2).map((product) => (
+                <Product {...product} />
+              ))}
             </div>
           </div>
         </div>
